@@ -61,17 +61,10 @@ void __fastcall testFunc4(void* param_1, uint64_t param_2, uint64_t param_3, uin
     logf("(%" PRIXPTR ", %" PRIX64 ", %" PRIX64 ", %" PRIX64 "), called from %" PRIXPTR "\n", param_1, param_2, param_3, param_4,    _ReturnAddress());
 }
 
-int __fastcall testFunc5(void* param_1, uint64_t param_2, uint64_t param_3, uint64_t param_4) {
-    logf("(%" PRIXPTR ", %" PRIX64 ", %" PRIX64 ", %" PRIX64 "), called from %" PRIXPTR "\n", param_1, param_2, param_3, param_4,    _ReturnAddress());
-    logf("Assumed to be recvUdpPacket?\n");
-    logf("\tparam_1 == this / object\n");
-    logf("\tparam_2 == uchar *recvBuf\n");
-    logf("\tparam_3 == uint length\n");
-    logf("\tparam_4 == uint32_t *ip_addr\n");
-}
+
 
 struct ts2NetworkFunctions netFuncs = {
-    testFunc0, testFunc1, testFunc2, testFunc3, testFunc4, testFunc5
+    testFunc0, testFunc1, testFunc2, testFunc3, testFunc4,
 };
 
 struct ts2NetworkFunctions * pnetFuncs = &netFuncs;
@@ -170,7 +163,7 @@ void reduxProfileSaveLoadMenu(astruct_2* param_1) {
     param_1->menu_name = "Redux Profile Save/Load";
     param_1->field_0x660 = 0x21;
     param_1->field_0x658 = 0xf2;
-    param_1->field_0x65c = 0x360;
+    param_1->field_0x65c = 0x3E0;
 
     menu_struct* menuPtr = ts2CreateMenu(param_1, 600);
 
@@ -224,8 +217,8 @@ void alternateTs2MainMenu(astruct_2* param_1) {
     // Unknown chunk
     param_1->menu_name = NULL;
     param_1->field_0x660 = 0xb;
-    param_1->field_0x658 = 0xa8;
-    param_1->field_0x65c = 0x360;
+    param_1->field_0x658 = 0x00;
+    param_1->field_0x65c = 0x3E0;
 
     menu_struct* menuPtr = ts2CreateMenu(param_1, 0x294);
 
@@ -248,10 +241,10 @@ void alternateTs2MainMenu(astruct_2* param_1) {
     button_menu_entry* saveLoadButton = reduxNewMenuEntry(menuPtr, 0x49, 0x100, 0x15, "Save/Load", 3, 5, reduxGotoProfileSaveLoadPage);
 
     // Select Profile
-    button_menu_entry* selectProfileButton = reduxNewMenuEntry(menuPtr, 0x49, 0x100, 0x15, "Select Profile", 3, 5, ts2GotoSelectProfilePage);
+    //button_menu_entry* selectProfileButton = reduxNewMenuEntry(menuPtr, 0x49, 0x100, 0x15, "Select Profile", 3, 5, ts2GotoSelectProfilePage);
 
     // Mapmaker
-    button_menu_entry* mapmakerButton = reduxNewMenuEntry(menuPtr, 0x49, 0x100, 0x15, "Mapmaker", 3, 5, ts2GotoMapmakerPage);
+    //button_menu_entry* mapmakerButton = reduxNewMenuEntry(menuPtr, 0x49, 0x100, 0x15, "Mapmaker", 3, 5, ts2GotoMapmakerPage);
 
     // Quit
     button_menu_entry* quitButton = reduxNewMenuEntry(menuPtr, 0x49, 0x100, 0x15, "Quit", 3, 5, ts2Quit);
