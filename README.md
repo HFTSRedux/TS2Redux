@@ -155,7 +155,7 @@ It's worth noting that this PC port of TS2 was not finished by the original deve
 # Disclaimer
 This is a fan-made project made by a small group of TimeSplitters fans over the course of several months. This project is not related to or endorsed by Free Radical Design, Eidos Interactive, Dambuster Studios, Deep Silver, or any other companies related to the development or publishing of TimeSplitters and/or Homefront: The Revolution.
 
-Great effort was made during the development of this project to respect the intellectual property rights of the game developers and publishers behind these two games. This project intentionally avoids distributing game files from Homefront and does allow people to play Homefront/TS2 without owning the game.
+Great effort was made during the development of this project to respect the intellectual property rights of the game developers and publishers behind these two games. This project intentionally avoids distributing game files from Homefront and does not allow people to play Homefront/TS2 without owning the game.
 
 For more information about *Homefront: The Revolution*, visit its official website here:
 https://www.deepsilver.com/en/games/homefront-the-revolution/
