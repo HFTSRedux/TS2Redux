@@ -48,7 +48,7 @@ It's worth noting that this PC port of TS2 was not finished by the original deve
 # Mods and Cheats
 Numerous mods and extra cheats are added. These mods are optional and can be enabled/disabled on-the-fly.
 
-When you launch TS2, a black window will appear showing you the button combinations to press on your keyboard to toggle each mod. Press **Shift+F11** to see even more keyboard commands.
+When you launch TS2, a black window will appear showing you the button combinations to press on your keyboard to toggle each mod. Press **Shift+F1** to see even more keyboard commands.
 
  - Infinite health (invincibility)
  - Infinite ammo
