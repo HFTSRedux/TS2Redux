@@ -158,7 +158,7 @@ goto guess_path
 	echo This creates a TS2-themed EXE from your Homefront game EXE.
 	echo It also boots straight into TS2, skipping Homefront's menu and videos.
 	echo.
-	echo This uses the open-source patcher "JDiff" - jojodiff.sourceforge.net
+	echo This uses the open-source patcher "JDiff" by Joris Heirbaut - jojodiff.sourceforge.net
 	echo.
 	pause
 	
