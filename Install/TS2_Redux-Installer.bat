@@ -162,7 +162,7 @@ goto guess_path
 	echo.
 	pause
 	
-	if exist %gamepath%\Bin64\TimeSplitters2.exe (
+	if exist "%gamepath%\Bin64\TimeSplitters2.exe" (
 		echo.
 		echo It looks like you've already done this step.
 		echo You can launch TS2 by using the launcher located here:
