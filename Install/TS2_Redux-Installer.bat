@@ -348,6 +348,7 @@ goto guess_path
 	if exist "%gamepath%\Bin64\TS2Redux\YossariansMods.dll" (
 		echo --------------------
 		echo TS2 Mods are currently ENABLED. Disable TS2 Mods? 
+		set "disablemods="
 		set /p "disablemods=Press Enter to disable or type "skip" (no quotes) to leave unchanged: "
 		if not defined disablemods (
 			ren "%gamepath%\Bin64\TS2Redux\YossariansMods.dll" YossariansMods.dll_disabled
@@ -360,6 +361,7 @@ goto guess_path
 	) else (
 		echo --------------------
 		echo TS2 Mods are currently DISABLED. Enable TS2 Mods?
+		set "enablemods="
 		set /p "enablemods=Press Enter to enable or type "skip" (no quotes) to leave unchanged: "
 		if not defined enablemods (
 			if exist "%gamepath%\Bin64\TS2Redux\YossariansMods.dll_disabled" (
@@ -379,6 +381,7 @@ goto guess_path
 	if exist "%gamepath%\Bin64\TS2Redux\YossarianRemix.dll" (
 		echo --------------------
 		echo TS2 Remix is currently ENABLED. Disable TS2 Remix? 
+		set "disableremix="
 		set /p "disableremix=Press Enter to disable or type "skip" (no quotes) to leave unchanged: "
 		if not defined disableremix (
 			ren "%gamepath%\Bin64\TS2Redux\YossarianRemix.dll" YossarianRemix.dll_disabled
@@ -390,7 +393,8 @@ goto guess_path
 		)
 	) else (
 		echo --------------------
-		echo TS2 Remix is currently DISABLED. Enable TS2 Remix? 
+		echo TS2 Remix is currently DISABLED. Enable TS2 Remix?
+		set "enableremix="
 		set /p "enableremix=Press Enter to enable or type "skip" (no quotes) to leave unchanged: "
 		if not defined enableremix (
 			if exist "%gamepath%\Bin64\TS2Redux\YossarianRemix.dll_disabled" (
