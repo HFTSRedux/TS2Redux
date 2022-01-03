@@ -1,0 +1,14 @@
+On the next screen, you'll be able to choose what to install. See this project's GitHub page for a complete description of what each item does.
+https://github.com/HFTSRedux/TS2Redux
+
+Report any bugs to the GitHub page under the Issues tab.
+https://github.com/HFTSRedux/TS2Redux/issues
+
+Alternatively, report bugs in the Discord server:
+https://discord.gg/fBnFZBYht5 (in #redux-bugs)
+
+DISCLAIMER
+This is a fan-made project made by a small group of TimeSplitters fans. This project is not related to or endorsed by Free Radical Design, Eidos Interactive, Dambuster Studios, Deep Silver, or any other companies related to the development or publishing of TimeSplitters and/or Homefront: The Revolution. Great effort was made during the development of this project to respect the intellectual property rights of the game developers and publishers behind these two games. This project intentionally avoids distributing game files from Homefront.
+
+For more information about Homefront: The Revolution, visit its official website here:
+https://www.deepsilver.com/en/games/homefront-the-revolution/

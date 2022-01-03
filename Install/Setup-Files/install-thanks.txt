@@ -1,0 +1,19 @@
+Credits
+
+This project was made possible by the hard work and enthusiasm of several TimeSplitters fans.
+
+Redux Tech Team:
+ - DevilDwarf: Numerous patches (menus, bugfixes)
+ - Fanoto: Technical insight and numerous patches (menus, bugfixes)
+ - RyanUKAus: Modding efforts, research, and technical insight
+ - Scotch: Textures, icons, appearance mods, scripts, and documentation
+ - Skibbles: Networking and community leader
+ - Yossarian The Assyrian: Mods development
+
+Special Thanks:
+ - Matt Phillips: For his work on the Homefront TS2 port
+ - Jalex
+ - LastLight: TimeSplitters Online Discord Administrator
+ - Spencer Perreault: Revealing the TS2 unlock codes
+ - TanFlo1997: Creating the Dambuster Studios Easter-Egg Hunt Discord server
+ - XeNTaX Game Research Forum: technical information about Homefront
