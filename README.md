@@ -57,8 +57,6 @@ When you launch TS2, a black window will appear showing you the button combinati
  - Freeze time
 	 - Prevents the game from processing A.I. movement.
 	 - Use this sparingly in short bursts, because it can lead to crashes, especially when moving into a new area in a level.
- - Static-crosshair aiming (for controller users)
-	 - This makes the crosshair stay fixed in the center of the screen when using a gamepad (Xbox controller, etc), just like basically every modern first person shooter.
  - NeoTokyo Pedestrians in Arcade.
 	 - Replaces most military characters with the civilians from NeoTokyo. This also shortens their names to fit in the character menus.
 	 - Compatible with the "Unusable Characters in Arcade" mod.
