@@ -1,5 +1,5 @@
 #define MyAppName "TS2 Redux"
-#define MyAppVersion "0.2.2"
+#define MyAppVersion "0.2.3"
 #define MyAppPublisher "Redux Tech Team"
 #define MyAppURL "https://github.com/HFTSRedux/TS2Redux"
 #define HomefrontMD5 "0326ea202fcd7ceb3760d14bc8d07f63"
@@ -30,8 +30,8 @@ PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=../Releases
 OutputBaseFilename=TS2-Redux-Installer-v{#MyAppVersion}
 SetupIconFile=..\Launcher-Icons\App-Icons\ts2r-multi.ico
-Compression=none
-;Compression=lzma
+;Compression=none
+Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
 WizardImageFile=Setup-Files\images\installer_image-*.bmp
