@@ -1,8 +1,8 @@
 #define MyAppName "TS2 Redux"
-#define MyAppVersion "0.2.3"
+#define MyAppVersion "0.2.4"
 #define MyAppPublisher "Redux Tech Team"
-#define MyAppURL "https://github.com/HFTSRedux/TS2Redux"
-#define HomefrontMD5 "0326ea202fcd7ceb3760d14bc8d07f63"
+#define GitHubURL "https://github.com/HFTSRedux/TS2Redux"
+#define DiscordURL "https://discord.gg/fBnFZBYht5"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -12,9 +12,9 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-AppPublisherURL={#MyAppURL}
-AppSupportURL={#MyAppURL}
-AppUpdatesURL={#MyAppURL}
+AppPublisherURL={#GitHubURL}
+AppSupportURL={#GitHubURL}
+AppUpdatesURL={#GitHubURL}
 DefaultDirName={reg:HKLM64\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 223100,InstallLocation}
 AppendDefaultDirName=no
 DisableDirPage=no
@@ -52,13 +52,17 @@ Name: "custom"; Description: "Customize"; Flags: iscustom
 
 [Components]
 ; general
-Name: "core"; Description: "Core Mods"; Flags: fixed; Types: main extended
-Name: "core\loader"; Description: "Install DLL Loader"; Flags: fixed dontinheritcheck;  Types:  main extended
-Name: "core\anypak"; Description: "Custom PAK Support"; Flags: fixed dontinheritcheck;  Types:  main extended
+Name: "core"; Description: "Core Mods"; Flags: fixed; Types: main extended custom
+Name: "core\loader"; Description: "Install DLL Loader"; Flags: fixed dontinheritcheck;  Types:  main extended custom
+Name: "core\anypak"; Description: "Custom PAK Support"; Flags: fixed dontinheritcheck;  Types:  main extended custom
 ; menus
 Name: "menu"; Description: "Unlock Main Menu Items"; Flags:; Types: main
 Name: "menu\archal"; Description: "Enable Arcade and Challenge Menus"; Flags: checkablealone;  Types:  main extended
 Name: "menu\optsave"; Description: "Enable Options Menu and Progress Save/Load"; Flags: checkablealone;  Types:  main extended
+; EXE + theme
+Name: "theme"; Description: "Game Executable Mods"; Flags:; Types: main extended
+Name: "theme\launcher"; Description: "Create TS2 Launcher"; Flags:;  Types:  main extended
+Name: "theme\ripper"; Description: "Remove Homefront Game Files (saves 42.5GB)"; Flags: disablenouninstallwarning;
 ; UI
 Name: "ui"; Description: "User Interface Enhancements"; Flags:; Types: main extended
 Name: "ui\menu"; Description: "Menu Layout Fixes"; Flags: checkablealone;  Types:  main extended
@@ -70,11 +74,6 @@ Name: "fix\reaprain"; Description: "ReaperSplitter Spawn + Rain-on-Camera Fixes"
 Name: "fix\invisible"; Description: "Invisibility Glitch Fix"; Flags: checkablealone;  Types:  main extended
 Name: "fix\breathe"; Description: "Disable Character Breathing Effect"; Flags: checkablealone;  Types:  main extended
 Name: "fix\neopatch"; Description: "NeoTokyo Cutscene Fix"; Flags:;  Types: main extended
-; EXE + theme
-Name: "theme"; Description: "Game Executable Mods"; Flags:; Types: main extended
-Name: "theme\launcher"; Description: "Create TS2 Launcher"; Flags:;  Types:  main extended
-Name: "theme\tots2"; Description: "Load Straight Into TS2"; Flags: checkablealone;  Types:  main extended
-Name: "theme\ripper"; Description: "Remove Homefront Game Files (saves 42.5GB)"; Flags:;  Types: main extended
 ;Name: "theme\compress"; Description: "Compress TS2 Game Files (saves 1.1GB)"; Flags:;  Types: main extended
 ; mods + cheats
 Name: "mod"; Description: "Game Mods and Cheats"; Flags:; Types: extended
@@ -106,13 +105,14 @@ Source: "App-DLLs\TS2Redux\GameFixesByFanotoAndDevilDwarf.dll"; DestDir: "{app}\
 Source: "App-DLLs\TS2Redux\InvisibleFixByDevilDwarf.dll"; DestDir: "{app}\Bin64\TS2Redux"; Flags: ignoreversion; Components: fix\invisible
 Source: "App-DLLs\TS2Redux\MinigamesByDevilDwarf.dll"; DestDir: "{app}\Bin64\TS2Redux"; Flags: ignoreversion; Components: mod\minigames
 Source: "App-DLLs\TS2Redux\mods.dll"; DestDir: "{app}\Bin64\TS2Redux"; Flags: ignoreversion; Components: core\anypak
-Source: "App-DLLs\TS2Redux\StraightIntoTS2byDevilDwarf.dll"; DestDir: "{app}\Bin64\TS2Redux"; Flags: ignoreversion; Components: theme\tots2
+Source: "App-DLLs\TS2Redux\StraightIntoTS2byDevilDwarf.dll"; DestDir: "{app}\Bin64\TS2Redux"; Flags: ignoreversion; Components: theme\launcher
 Source: "App-DLLs\TS2Redux\UnlockArcadeAndChallengeByFanoto.dll"; DestDir: "{app}\Bin64\TS2Redux"; Flags: ignoreversion; Components: menu\archal
 Source: "App-DLLs\TS2Redux\YossarianRemix.dll"; DestDir: "{app}\Bin64\TS2Redux"; Flags: ignoreversion; Components: mod\yosremix
 Source: "App-DLLs\TS2Redux\YossariansMods.dll"; DestDir: "{app}\Bin64\TS2Redux"; Flags: ignoreversion; Components: mod\yosmods
 ; EXE
 Source: "EXE-Appearence\Win-TileIcons\TimeSplitters2.VisualElementsManifest.xml"; DestDir: "{app}\Bin64"; Flags: ignoreversion; Components: theme\launcher
 Source: "EXE-Appearence\Win-TileIcons\tileicons\*"; DestDir: "{app}\Bin64\tileicons"; Flags: ignoreversion; Components: theme\launcher
+Source: "Setup-Files\homefront_ripper.bat"; DestDir: "{tmp}"; Flags: ignoreversion; Components: theme\ripper
 ; textures PAK
 Source: "Texture-Mods\ts2_redux.pak"; DestDir: "{app}\gamehf2"; Flags: ignoreversion; Components: ui\textures
 ; Jdiff - jojodiff.sourceforge.net
@@ -130,8 +130,100 @@ Name: "{group}\TimeSplitters 2"; Filename: "{app}\Bin64\TimeSplitters2.exe"; Wor
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 
 [Run]
+Filename: "{#DiscordURL}"; Description: "Join TimeSplitters Online Discord Server"; Flags: postinstall shellexec runasoriginaluser;
 Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\Bin64\Homefront2_Release.exe"" ""{tmp}\TS2-EXE-Appearence-Patch.pat"" ""{app}\Bin64\TimeSplitters2.exe"" "; StatusMsg: "Creating TS2 Launcher..."; Flags: skipifsilent; Components: theme\launcher;
 Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\NeoTokyo-PatchV2.data"" ""{app}\gamehf2\ts2_neotokyo_fix.pak"" "; StatusMsg: "Fixing NeoTokyo..."; Flags: skipifsilent; Components: fix\neopatch;
+Filename: "{tmp}\homefront_ripper.bat"; Parameters:" ""{app}"" "; StatusMsg: "Running Homefront Ripper..."; Flags: skipifsilent; Components: theme\ripper;
+Filename: "{cmd}"; Parameters:"/c rd /s /q ""{app}\ripped"""; Description: "Delete Ripped Homefront files"; Flags: postinstall; Components: theme\ripper;
+
+[UninstallRun]
+;Filename: "{cmd}"; Parameters:"/c move ""{app}\ripped\*"" ""{app}"" "; Components: theme\ripper;
+
+[Code]
+const
+  MD5_Expected = '0326ea202fcd7ceb3760d14bc8d07f63';
+
+var
+  MD5_Calc: string;
+
+function NextButtonClick(PageId: Integer): Boolean;
+begin
+    Result := True;
+    if (PageId = wpSelectDir) then begin
+        if not FileExists(ExpandConstant('{app}\Bin64\Homefront2_Release.exe')) then begin
+          MsgBox('Warning: Could not find Homefront game EXE within the selected folder. Please check your install path and try again.', mbCriticalError, MB_OK);
+          Result := False;
+        end else begin
+          MD5_Calc := GetMD5OfFile(ExpandConstant('{app}\Bin64\Homefront2_Release.exe'));
+          if Result and (MD5_Calc <> MD5_Expected) then begin
+            if MsgBox('Warning: MD5 Check Failed! The game EXE you are using is different than what was expected. Proceed anyway?', mbConfirmation, MB_YESNO) = IDNO then begin
+              Result := False;
+            end;
+          end;
+        end;
+    end;
+end;
+
+
+function FileReplaceString(const FileName, SearchString, ReplaceString: string):boolean;
+var
+  MyFile : TStrings;
+  MyText : string;
+begin
+  MyFile := TStringList.Create;
+
+  try
+    result := true;
+
+    try
+      MyFile.LoadFromFile(FileName);
+      MyText := MyFile.Text;
+
+      { Only save if text has been changed. }
+      if StringChangeEx(MyText, SearchString, ReplaceString, True) > 0 then
+      begin;
+        MyFile.Text := MyText;
+        MyFile.SaveToFile(FileName);
+      end;
+    except
+      result := false;
+    end;
+  finally
+    MyFile.Free;
+  end;
+end;
+
+
+var
+  supersampling: String;
+  CFGFile: String;
+
+function PrepareToInstall(var NeedsRestart: Boolean): String;
+begin
+  CFGFile := ExpandConstant('{usersavedgames}') + '\homefront2\game.cfg';
+  if (FileExists(CFGFile)) then begin
+    Log('Config file found at: ' + CFGFile);
+    FileReplaceString(CFGFile, '-- [Game-Configuration]', '[Game-Configuration]'); // workaround to make the cfg file use INI syntax
+    
+    supersampling := GetIniString('Game-Configuration', 'r_supersampling', '0', CFGFile);
+    
+    Log('r_supersampling current value: ' + supersampling);
+    
+    if StrToFloat(supersampling) > 1 then begin
+      if MsgBox('Warning: Your graphics settings have Supersampling enabled, which causes problems when playing TS2. Would you like the installer to disable Supersampling for you now?', mbConfirmation, MB_YESNO) = IDYES then begin
+        if SetIniString('Game-Configuration', 'r_supersampling', ' 1', CFGFile) = True then Log('r_supersampling value changed to 1') else Log('r_supersampling value was not changed')
+      end;
+    end else begin;
+      Log('r_supersampling does not exceed 1. No change needed.');
+    end;
+    
+    FileReplaceString(CFGFile, '[Game-Configuration]', '-- [Game-Configuration]'); // we don't have to change this back, but just to be safe...
+  end else begin;
+    Log('Warning: Homefront CFG file not found. Cannot check supersampling value.');
+  end;
+  
+  Result := '';
+end;
 
 [Messages]
 BeveledLabel=Redux Tech Team
