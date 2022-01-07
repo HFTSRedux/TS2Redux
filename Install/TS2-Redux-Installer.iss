@@ -1,5 +1,5 @@
 #define MyAppName "TS2 Redux"
-#define MyAppVersion "0.2.4"
+#define MyAppVersion "0.2.5"
 #define MyAppPublisher "Redux Tech Team"
 #define GitHubURL "https://github.com/HFTSRedux/TS2Redux"
 #define DiscordURL "https://discord.gg/fBnFZBYht5"
@@ -62,6 +62,8 @@ Name: "menu\optsave"; Description: "Enable Options Menu and Progress Save/Load";
 ; EXE + theme
 Name: "theme"; Description: "Game Executable Mods"; Flags:; Types: main extended
 Name: "theme\launcher"; Description: "Create TS2 Launcher"; Flags:;  Types:  main extended
+Name: "theme\shortcut1"; Description: "Add TS2 Shortcut to Start Menu"; Types:  main extended
+Name: "theme\shortcut2"; Description: "Add TS2 Shortcut to Desktop";
 Name: "theme\ripper"; Description: "Remove Homefront Game Files (saves 42.5GB)"; Flags: disablenouninstallwarning;
 ; UI
 Name: "ui"; Description: "User Interface Enhancements"; Flags:; Types: main extended
@@ -126,8 +128,11 @@ Type: files; Name: "{app}\Bin64\TimeSplitters2.exe"; Components: theme\launcher
 Type: files; Name: "{app}\gamehf2\ts2_neotokyo_fix.pak"; Components: fix\neopatch
 
 [Icons]
-Name: "{group}\TimeSplitters 2"; Filename: "{app}\Bin64\TimeSplitters2.exe"; WorkingDir: "{app}"; Flags: createonlyiffileexists;
-Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
+Name: "{group}\TimeSplitters 2"; Filename: "{app}\Bin64\TimeSplitters2.exe"; WorkingDir: "{app}"; Components: theme\shortcut1;
+Name: "{group}\TimeSplitters Online Discord Server"; Filename: "{#DiscordURL}"; Components: theme\shortcut1;
+Name: "{group}\TS2 Redux GitHub Page"; Filename: "{#GitHubURL}"; Components: theme\shortcut1;
+Name: "{commondesktop}\TimeSplitters 2"; Filename: "{app}\Bin64\TimeSplitters2.exe"; WorkingDir: "{app}"; Flags: createonlyiffileexists; Components: theme\shortcut2;
+Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; Components: theme\shortcut1;
 
 [Run]
 Filename: "{#DiscordURL}"; Description: "Join TimeSplitters Online Discord Server"; Flags: postinstall shellexec runasoriginaluser;
@@ -141,26 +146,48 @@ Filename: "{cmd}"; Parameters:"/c rd /s /q ""{app}\ripped"""; Description: "Dele
 
 [Code]
 const
-  MD5_Expected = '0326ea202fcd7ceb3760d14bc8d07f63';
+  MD5_HomefrontStock = '0326ea202fcd7ceb3760d14bc8d07f63';
+  MD5_LsaoStock = '8a92c275b504c96092d2398a169c0433';
 
 var
-  MD5_Calc: string;
+  MD5_HomefrontTarget: string;
+  MD5_LsaoTarget: string;
 
 function NextButtonClick(PageId: Integer): Boolean;
 begin
     Result := True;
+    
     if (PageId = wpSelectDir) then begin
         if not FileExists(ExpandConstant('{app}\Bin64\Homefront2_Release.exe')) then begin
           MsgBox('Warning: Could not find Homefront game EXE within the selected folder. Please check your install path and try again.', mbCriticalError, MB_OK);
           Result := False;
         end else begin
-          MD5_Calc := GetMD5OfFile(ExpandConstant('{app}\Bin64\Homefront2_Release.exe'));
-          if Result and (MD5_Calc <> MD5_Expected) then begin
-            if MsgBox('Warning: MD5 Check Failed! The game EXE you are using is different than what was expected. Proceed anyway?', mbConfirmation, MB_YESNO) = IDNO then begin
+          MD5_HomefrontTarget := GetMD5OfFile(ExpandConstant('{app}\Bin64\Homefront2_Release.exe'));
+          if Result and (MD5_HomefrontTarget <> MD5_HomefrontStock) then begin
+            if MsgBox('Warning: MD5 Check Failed! The game EXE you are using is different than what was expected. Proceed anyway? Generated checksum: ' + MD5_HomefrontTarget, mbConfirmation, MB_YESNO) = IDNO then begin
               Result := False;
             end;
           end;
         end;
+    end;
+    
+    if (PageId = wpSelectComponents) then begin
+      if IsComponentSelected('fix\neopatch') then begin
+        if not FileExists(ExpandConstant('{app}\gamehf2\lsao_cached.pak')) then begin
+            MsgBox('Warning: Could not find file "lsao_cached.pak" within the given folder. This file contains important TS2 game files and is required in order to continue. Please check your install path and try again.', mbCriticalError, MB_OK);
+            Result := False;
+          end else begin
+            MsgBox('Setup needs to verify your TS2 game files. This may take a moment.', mbInformation, MB_OK);
+            MD5_LsaoTarget := GetMD5OfFile(ExpandConstant('{app}\gamehf2\lsao_cached.pak'));
+            if Result and (MD5_LsaoTarget <> MD5_LsaoStock) then begin
+              if MsgBox('Warning: MD5 Check Failed! The game data file "lsao_cached.pak" you are using is different than what was expected. Proceed anyway? Generated checksum: ' + MD5_LsaoTarget, mbConfirmation, MB_YESNO) = IDNO then begin
+                Result := False;
+              end;
+            end else begin
+              MsgBox('File verification complete. Game files are compatible and ready to be patched.', mbInformation, MB_OK);
+            end;
+        end;
+      end;
     end;
 end;
 
