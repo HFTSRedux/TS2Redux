@@ -92,33 +92,42 @@ When you launch TS2, a black window will appear showing you the button combinati
 # Screenshots
 
 [Main menu](https://i.imgur.com/xv2sGYb.png). New menu items, high-res logo, modern gamepad icons
-![TS2 main menu](https://i.imgur.com/xv2sGYbl.png)
+
+[TS2 main menu](https://i.imgur.com/xv2sGYbl.png)
 *Note: the Network menu doesn't work yet and isn't visible in public releases of the mod*
 
 
 [TS2 on Xbox](https://i.imgur.com/1e2hVYd.jpg) (emulated), for reference
+
 ![Screenshot from Xbox - Mexican Mission](https://i.imgur.com/1e2hVYdl.jpg)
 
 [TS2 Redux on PC](https://i.imgur.com/4ZzOnN1.jpg) (at 1080p)
+
 ![Screenshot From PC - Mexican Mission](https://i.imgur.com/4ZzOnN1h.jpg)
 
 [Texture example: Diamondplate](https://i.imgur.com/c2qwANw.jpg) - *Top: new / Bottom: old*
+
 ![Screenshot showing high-res texture example of diamondplate texture](https://i.imgur.com/c2qwANwl.jpg)
 
 
 [Texture example: Crate](https://i.imgur.com/ZOhobU0.jpg) - *Left: old / Right: new*
+
 ![Screenshot showing high-res texture example of a crate texture](https://i.imgur.com/ZOhobU0l.jpg)
 
 [Texture example: Game mode icons](https://i.imgur.com/XtNGhH7.jpg) - *Left: old / Right: new*
+
 ![Comparison of old and new textures - game mode icons](https://i.imgur.com/XtNGhH7l.jpg)
 
 [Weapon crosshairs](https://i.imgur.com/XaT3CBH.jpg) - *Left: old / Right: new*
+
 ![Comparison of old and new textures - weapon crosshairs](https://i.imgur.com/XaT3CBHl.jpg)
 
 [Chemical Plant](https://i.imgur.com/iEzkM8k.jpg) map (from TimeSplitters 1)
+
 ![Chemical Plant map 1](https://i.imgur.com/iEzkM8kl.jpg)
 
 [Chemical Plant](https://i.imgur.com/rFTp0cX.jpg) map (from TimeSplitters 1)
+
 ![Chemical Plant map 2](https://i.imgur.com/rFTp0cXl.jpg)
 
 # Installing and Uninstalling
