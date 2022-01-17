@@ -9,10 +9,15 @@ extern "C"
 void* _ReturnAddress(void);
 #pragma intrinsic(_ReturnAddress)
 
+#ifdef _DEBUG
 #define printf(...) printf2(__VA_ARGS__)
+#else
+#define printf(...)
+#endif
 #define logf(...) printf("%s:%d:%s() - ", __FILE__, __LINE__, __func__); printf(__VA_ARGS__)
 #define PROFILE_FILENAME "TS2Save.bin"
 #define LOG_FILENAME "Redux.log"
+#define NELEMS(x) (sizeof(x) / sizeof(x[0]))
 
 struct ts2Page reduxProfileSaveLoadPage = { 0 };
 
@@ -40,6 +45,21 @@ int printf2(const char* format, ...) {
     return ret;
 }
 
+static void printLastError(void) {
+    char msgBuf[512];
+    DWORD len, errcode;
+
+    errcode = GetLastError();
+    len = FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, NULL, errcode, 0, msgBuf, sizeof(msgBuf), NULL);
+
+    if (len == 0) {
+        printf("Unable to find last error\n");
+        return;
+    }
+
+    printf("Error Code: %d, Error Msg: %s\n", errcode, msgBuf);
+}
+
 
 void __fastcall testFunc0(void* param_1, uint64_t param_2) {
     logf("(%" PRIXPTR ", %" PRIX64 "), called from %" PRIXPTR "\n", param_1, param_2, _ReturnAddress());
@@ -62,13 +82,11 @@ void __fastcall testFunc4(void* param_1, uint64_t param_2, uint64_t param_3, uin
 }
 
 
-
 struct ts2NetworkFunctions netFuncs = {
     testFunc0, testFunc1, testFunc2, testFunc3, testFunc4,
 };
 
 struct ts2NetworkFunctions * pnetFuncs = &netFuncs;
-
 
 
 void initAddrs(void *baseAddress) {
@@ -205,6 +223,7 @@ void alternateTs2MainMenu(astruct_2* param_1) {
         printf("ts2NetworkSend == %" PRIXPTR "\n", ts2NetworkSend);
         printf("*ts2NetworkSend == %" PRIXPTR "\n", *ts2NetworkSend);
         printf("*ts2MysteryNetworkStruct == %" PRIXPTR "\n", *ts2MysteryNetworkStruct);
+#ifdef _DEBUG
         printf("ts2Tmp == %" PRIXPTR "\n", ts2Tmp);
         printf("*ts2Tmp == %" PRIX32"\n", *ts2Tmp);
         *ts2Tmp = 4;
@@ -212,6 +231,7 @@ void alternateTs2MainMenu(astruct_2* param_1) {
 
         *ts2MysteryNetworkStruct = &pnetFuncs;
         *bMultiplayer = '\x01';
+#endif
     }
 
     // Unknown chunk
@@ -276,7 +296,7 @@ void hexdump(void* addr, uint len) {
     BYTE* walker = (BYTE*)addr;
 
     while (len > 0 ) {
-		printf("%08X: ", walker);
+		printf("%016" PRIX64 ": ", walker);
 		for (uint i = 0; i < 16; i++) {
 			if (i % 8 == 0) {
 				printf(" ");
@@ -308,6 +328,63 @@ void hexdump(void* addr, uint len) {
 	}
 }
 
+static void writeExeMem(void* dst, BYTE* src, size_t len) {
+    MEMORY_BASIC_INFORMATION mem;
+    DWORD oldPerms;
+    DWORD newPerms;
+    BYTE *dstBuf;
+
+    newPerms = PAGE_EXECUTE_READWRITE;
+    oldPerms = 0;
+    dstBuf = (BYTE *)dst;
+
+    if (VirtualQuery(dst, &mem, sizeof(mem)) == 0) {
+        logf("Failed to query memory, unable to patch.\n");
+        return;
+    }
+
+    if (!VirtualProtect(mem.AllocationBase, mem.RegionSize, newPerms, &oldPerms)) {
+        logf("Failed to VirtualProtect() (%p for %d bytes) to RWX\n");
+        printLastError();
+        return;
+    }
+
+    for (unsigned int i = 0; i < len; i++) {
+        dstBuf[i] = src[i];
+    }
+
+    if (!VirtualProtect(mem.AllocationBase, mem.RegionSize, newPerms, &oldPerms)) {
+        logf("Failed to VirtualProtect() to original permitions\n");
+        printLastError();
+        return;
+    }
+}
+
+typedef struct {
+    void *addr;
+    size_t len;
+    BYTE *patchBytes;
+} Patch;
+
+BYTE nopFarm[4096] = { NOP };
+
+Patch exePatches[] = {
+    {
+        ts2InExtrasCheck,
+        2,
+        nopFarm
+    }
+};
+
+static void patchExe(void *baseAddress) {
+    BYTE patchBuf[4096];
+
+    for (unsigned int i = 0; i < NELEMS(exePatches); i++) {
+        Patch patch = exePatches[i];
+        writeExeMem(patch.addr, patch.patchBytes, patch.len);
+    }
+}
+
 BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved) {
     switch (ul_reason_for_call) {
     case DLL_THREAD_ATTACH:
@@ -319,7 +396,6 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpRese
         break;
     }
 
-    AllocConsole();
     printf("Redux: DllMain\n");
 
     HINSTANCE rootModule = GetModuleHandle(NULL);
@@ -327,6 +403,7 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpRese
     printf("Base Address: %" PRIXPTR "\n", rootModule);
 
     initAddrs(rootModule);
+    patchExe(rootModule);
 
     reduxProfileSaveLoadPage.unk1_func = ts2PageStructFunc1;
     reduxProfileSaveLoadPage.unk2_func = ts2PageStructFunc2;

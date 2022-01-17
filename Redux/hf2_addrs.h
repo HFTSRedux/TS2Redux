@@ -7,6 +7,8 @@
 #define SECTION_NAME		".reloc2$m"
 #define POST_SECTION_NAME	".reloc2$z"
 
+#define NOP ((BYTE) 0x90)
+
 #pragma section(PRE_SECTION_NAME)
 #pragma section(SECTION_NAME)
 #pragma section(POST_SECTION_NAME)
@@ -54,6 +56,9 @@ RELOC_FUNC(ts2DisplayBanner1, uint32_t, (const char *), 0x121cd00);
 RELOC_FUNC(ts2SetFontDetails, uint32_t, (int), 0x121bb24);
 RELOC_PTR(ts2SelectProfilePage, void *, 0x24f2dc0);
 RELOC_PTR(ts2MapmakerPage, void *, 0x24f1a50);
+
+// EXE Patches
+RELOC_PTR(ts2InExtrasCheck, BYTE *, 0x15EDB5);
 
 /*
 TS2 Page Notes:
