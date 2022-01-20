@@ -1,4 +1,5 @@
 
+
 ![TS2 Redux head logo](https://i.imgur.com/IhwzsuM.png)
 # Introduction
 ### What Is TS2 Redux?
@@ -46,7 +47,7 @@ It's worth noting that this PC port of TS2 was not finished by the original deve
 	 - Many in-game textures have been recreated in higher resolutions to helps this almost 20 year old game look a bit less pixelated on HD displays.
 
 # Mods and Cheats
-Numerous mods and extra cheats are added. These mods are optional and can be enabled/disabled on-the-fly.
+Numerous mods and extra cheats are added. These mods are optional and can be selected during the install process. Once installed, they can be enabled/disabled on the fly using keyboard shortcuts.
 
 When you launch TS2, a black window will appear showing you the button combinations to press on your keyboard to toggle each mod. Press **Shift+F1** to see even more keyboard commands.
 
@@ -54,6 +55,7 @@ When you launch TS2, a black window will appear showing you the button combinati
  - Infinite ammo
  - Bodies don't disappear after dying (story mode only)
  - Disable auto-lookahead (camera doesn't return to center when moving)
+ - Disable breathing (no camera sway while character is idle)
  - Freeze time
 	 - Prevents the game from processing A.I. movement.
 	 - Use this sparingly in short bursts, because it can lead to crashes, especially when moving into a new area in a level.
@@ -93,7 +95,7 @@ When you launch TS2, a black window will appear showing you the button combinati
 
 [Main menu](https://i.imgur.com/xv2sGYb.png). New menu items, high-res logo, modern gamepad icons
 
-[TS2 main menu](https://i.imgur.com/xv2sGYbl.png)
+![TS2 main menu](https://i.imgur.com/xv2sGYbl.png)
 *Note: the Network menu doesn't work yet and isn't visible in public releases of the mod*
 
 
@@ -136,31 +138,22 @@ When you launch TS2, a black window will appear showing you the button combinati
 To install, follow these steps:
 
  1. Download the latest version of TS2 Redux from the project's GitHub page: https://github.com/HFTSRedux/TS2Redux/releases
- 2. Extract the ZIP file you just downloaded. Extract it to any folder on your PC.
- 3. Double-click the batch file named "TS2_Redux-Installer.bat" and follow the on-screen instructions.
+ 2. Double-click on the application you just downloaded and follow the on-screen instructions.
 
-That's it! After using the installer, the mod will be loaded the next time you start the game.
+That's it! After using the installer, the mod will be active the next time you start the game.
 
 ### Optional: Custom TS2 Launcher
 ![TimeSpliiters 2 themed exe](https://i.imgur.com/4oyG4Qu.png)
-Want to have a fancy TS2 launcher that skips Homefront's menu and boots right into TS2? The installer script (included with this mod) has an option that creates a TS2-themed copy of your Homefront game executable.
+Want to have a fancy TS2 launcher that skips Homefront's menu and boots right into TS2? The installer (included with this mod) has an option that creates a TS2-themed copy of your Homefront game executable. Just make sure the "Create TS2 Launcher" option is checked while on the "Select Component" screen during the install process.
 
 ### Optional: Reduce Homefront's Size
 
-The installer script (included with this mod) has an option that removes as much of Homefront's game files as possible, leaving just enough for TS2 to work. This reduces the game's size from 46GB to 2.5GB. Homefront's main menu will still work, which is useful for changing video settings, but you won't be able to play any missions/levels in Homefront.
+The installer has an option that removes as much of Homefront's game files as possible, leaving just enough for TS2 to work. This reduces the game's size from 46GB to 2.5GB. Homefront's main menu will still work, which is useful for changing video settings, but you won't be able to play any missions/levels in Homefront.
 
-Once the process is done, all of the non-TimeSplitters files will be moved into a folder called "ripped" located in Homefront's game folder. Once you test to make sure your game runs and works, you can delete this "ripped" folder.
+Once the process is done, all of the non-TimeSplitters files will be moved into a folder called "ripped" located in Homefront's game folder. The installer will also optionally delete this folder for you at the end of the setup process.
 
 ### Removing TS2 Redux
-To remove this mod, do the following:
-
- 1. Open a file explorer window and browse to your Homefront game folder.
- 2. Delete these files and folders:
-	 - Bin64/dinput8.dll
-	 - Bin64/TS2Redux/*
-	 - Bin64/TimeSplitters2.exe
-	 - gamehf2/ts2_redux.pak
-	 - gamehf2/ts2_neotokyo_fix.pak
+To uninstall this mod, simply run the uninstaller application from your start menu. All files added during the initial install process will then be deleted from your PC. If you can't find the uninstaller, you should see it listed in as a program in Windows' add/remove programs list. The uninstaller is also located in your Homefront game folder under Bin64/TS2Redux/Setup.
 
 If something goes wrong and you want to start completely over, you can use Steam's "[Verify integrity](https://help.steampowered.com/en/faqs/view/0C48-FCBD-DA71-93EB)" feature to re-download Homefront and restore it back to its original state.
 
@@ -192,13 +185,15 @@ Join our the [TimeSplitters Online Discord server ](https://discord.gg/fBnFZBYht
 	 - Yes.
  5. **I'm only interested in playing TS2. Do I need to keep Homefront's game files on my computer?**
 	 - Yes and no. The port of TS2 within Homefront is not a standalone program. It's embedded inside of the Homefront game executable. In order to run TS2, Homefront must be able to run. You can, however, delete most of Homefront's game files reducing the total size of the game from ~46GB down to just ~2.5GB. Use the installer batch script (included with this project) to perform this step.
- 6. **How do I change my video display settings?**
+ 6. **Do I have to download all of Homefront just to play TS2?**
+	 - If you haven't downloaded Homefront yet, you can optionally download just enough of Homefront from Steam required to play TS2. This saves about 40GB of internet bandwidth. We have created a script called "[ts2-downloader.bat](https://github.com/HFTSRedux/TS2Redux/tree/master/Install/Setup-Files/TS2-downloader)" that uses a third-party tool, [DepotDownloader](https://github.com/SteamRE/DepotDownloader/releases), to download specific files from Steam that allows you to play TS2 without having to download all of Homefront. This script is in BETA and requires basic knowledge of how to use Windows batch scripts. If you need help, ask us in Discord.
+ 7. **How do I change my video display settings?**
 	 - Use Homefront's settings menus to change video output settings, among other settings (including mouse sensitivity).
- 7. **Do I play through TS2 in order to unlock characters and levels like in the console ports?**
-	 - No. Everything is unlocked by default. This includes all characters, story missions, arcade levels, challenge modes, cheats, and minigames (playable from the *Temporal Uplink* weapon).
- 8. **I want to help!**
+ 8. **Do I play through TS2 in order to unlock characters and levels like in the console ports?**
+	 - No. Everything is unlocked by default. This includes all characters, story missions, arcade levels, challenge modes, cheats, and minigames (playable from the *Temporal Uplink* weapon). We are looking into how to allow people to progress through the game and unlock things like in the regular game, but that's not available just yet.
+ 9. **I want to help!**
 	 - Join us on the TSO Discord server ([click here](https://discord.gg/fBnFZBYht5)) and message a member of the Redux Tech Team to inquire further.
- 9. **Is this any different than playing TS2 in an emulator?**
+ 10. **Is this any different than playing TS2 in an emulator?**
 	 - There are a advantages and disadvantages to this port compared to playing TS2 using an emulator in Xemu (Xbox), Dolphin (GameCube), or PCXS2 (PS2). People have created mods for some of the console ports of TS2 that increase texture resolution, inject mouse/keyboard input, among other things. The overall experience of playing TS2 Redux on PC compared to playing in an emulator is very similar, except TS2 Redux (PC) does all this natively. TS2 on PC also includes high-quality audio, the TS1 map *Chemical Plant*, proper widescreen support, and more.
 
 # Disclaimer
