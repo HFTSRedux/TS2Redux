@@ -338,13 +338,13 @@ static void writeExeMem(void* dst, BYTE* src, size_t len) {
     oldPerms = 0;
     dstBuf = (BYTE *)dst;
 
-    if (VirtualQuery(dst, &mem, sizeof(mem)) == 0) {
+    if (VirtualQuery(dstBuf, &mem, sizeof(mem)) == 0) {
         logf("Failed to query memory, unable to patch.\n");
         return;
     }
 
     if (!VirtualProtect(mem.AllocationBase, mem.RegionSize, newPerms, &oldPerms)) {
-        logf("Failed to VirtualProtect() (%p for %d bytes) to RWX\n");
+        logf("Failed to VirtualProtect() (%p for %d bytes) to RWX\n", mem.AllocationBase, mem.RegionSize);
         printLastError();
         return;
     }
@@ -366,22 +366,28 @@ typedef struct {
     BYTE *patchBytes;
 } Patch;
 
-BYTE nopFarm[4096] = { NOP };
+typedef struct {
+    void* addr;
+    size_t len;
+} NOPPatch;
 
-Patch exePatches[] = {
-    {
-        ts2InExtrasCheck,
-        2,
-        nopFarm
-    }
-};
+BYTE nopFarm[4096];
 
 static void patchExe(void *baseAddress) {
-    BYTE patchBuf[4096];
+    memset(nopFarm, NOP, NELEMS(nopFarm));
+
+	Patch exePatches[] = {
+		{
+			ts2InExtrasCheck,
+			2,
+			nopFarm
+		}
+	};
 
     for (unsigned int i = 0; i < NELEMS(exePatches); i++) {
-        Patch patch = exePatches[i];
-        writeExeMem(patch.addr, patch.patchBytes, patch.len);
+        Patch *patch = &exePatches[i];
+        logf("Patching 0x%" PRIX64 " for %d bytes\n", patch->addr, patch->len);
+        writeExeMem(patch->addr, patch->patchBytes, patch->len);
     }
 }
 
