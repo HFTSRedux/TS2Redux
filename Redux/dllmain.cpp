@@ -14,7 +14,7 @@ void* _ReturnAddress(void);
 #else
 #define printf(...)
 #endif
-#define logf(...) printf("%s:%d:%s() - ", __FILE__, __LINE__, __func__); printf(__VA_ARGS__)
+#define logf(...) printf("%s:%d:%s() - ", __FILE__, __LINE__, __FUNCTION__); printf(__VA_ARGS__)
 #define PROFILE_FILENAME "TS2Save.bin"
 #define LOG_FILENAME "Redux.log"
 #define NELEMS(x) (sizeof(x) / sizeof(x[0]))
@@ -28,12 +28,12 @@ int printf2(const char* format, ...) {
     static HANDLE logFile = NULL;
 
     if (logFile == NULL) {
-		logFile = CreateFile2(_T(LOG_FILENAME), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, CREATE_ALWAYS, NULL);
+		HANDLE logfile = CreateFile(_T(PROFILE_FILENAME), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, NULL, CREATE_ALWAYS, NULL, NULL);
     }
 
     va_list argptr;
     va_start(argptr, format);
-    int ret = vsnprintf(str, sizeof(str), format, argptr);
+    int ret = vsnprintf_s(str, sizeof(str), format, argptr);
 
     DWORD bytesWritten;
     if (!WriteFile(logFile, str, ret, &bytesWritten, NULL)) {
@@ -106,7 +106,7 @@ void saveTs2Profile() {
         return;
     }
 
-    HANDLE profileFile = CreateFile2(_T(PROFILE_FILENAME), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, CREATE_ALWAYS, NULL);
+	HANDLE profileFile = CreateFile(_T(PROFILE_FILENAME), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, NULL, CREATE_ALWAYS, NULL, NULL);
 
     if (profileFile == INVALID_HANDLE_VALUE) {
         logf("profileFile == INVALID_HANDLE_VALUE\n");
