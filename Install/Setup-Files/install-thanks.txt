@@ -17,3 +17,7 @@ Special Thanks:
  - Spencer Perreault: Revealing the TS2 unlock codes
  - TanFlo1997: Creating the Dambuster Studios Easter-Egg Hunt Discord server
  - XeNTaX Game Research Forum: technical information about Homefront
+ 
+ The setup wizard makes use of these external programs:
+ - Jojos Binary Diff ("Jdiff"): https://sourceforge.net/projects/jojodiff/
+ - DepotDownloader: https://github.com/SteamRE/DepotDownloader

@@ -1,0 +1,50 @@
+﻿TS2
+	Characters
+	Levels
+		Arcade
+			05 - Chemical Plant TS1
+			10 - Compound
+			11 - Streets
+			13 - Site
+			21 - Chinese
+			29 - Aztec
+			33 - Hangar
+			36 - Ice Station
+			42 - Mexican Mission
+			43 - Nightclub
+			45 - Hospital
+			46 - Scrapyard
+			47 - Circus
+			50 - UFOpia
+			55 - Training Ground
+			56 - Chasm
+			64 - Robot Factory
+			65 - Scrapyard
+		Story
+			20 - Chicago
+			31 - Atom Smasher
+			32 - Wildwest
+			34 - Notre Dame
+			35 - Siberia
+			38 - Neo Tokyo
+			39 - Space Station
+			40 - Return To Planet X
+			41 - Robot Factory
+	Testing + Other FRD Games
+		Second Sight
+		Tests
+		TS Future Perfect
+	UI
+		Arcade League and Challenge Thumbnails
+		Character Images
+		Crosshairs
+		Fonts
+		Game Modes
+		Gamepad Icons
+		Headers
+		Health Bars
+		HUD Icons
+		Logos
+		Map Thumbnails (Arcade and Story)
+		Menu Icons
+		Weapon Ammo Icons
