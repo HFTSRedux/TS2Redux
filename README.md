@@ -3,15 +3,15 @@
 ![TS2 Redux head logo](https://i.imgur.com/IhwzsuM.png)
 # Introduction
 ### What Is TS2 Redux?
-**TS2 Redux** is a fan-made project which aims to fix and enhance the port of **TimeSplitters 2** (TS2) contained in the 2016 game **Homefront: The Revolution**, which was hidden away as an unlockable easter-egg.
+**TS2 Redux** is a fan-made project which aims to fix and enhance the port of **TimeSplitters 2** (TS2) contained in the 2016 game **Homefront: The Revolution** as a hidden away as an unlockable easter-egg. This port of TS2 is rendered natively on PC (or console) in full HD (to 4K), with widescreen and mouse/keyboard/gamepad support. It uses high-quality assets and audio.
 
-This port of TS2 is rendered natively on PC/console in full HD, including up to 4K, with native widescreen and mouse/keyboard/gamepad support. It uses high-quality assets and lossless audio for music and sound-effects. This port of TS2 is the only "HD remaster" of TS2 currently in existence.
+Video: [YouTube - TimeSplitters 2 Redux v0.1 - Release Trailer](https://youtu.be/tpDS2uFF_G8)
 
-Normally, the version of TS2 included in Homefront is limited to just 2 playable story missions: Siberia and Chicago. Players would have to play through Homefront's campaign for several hours until they reach an arcade cabinet located in the game. The player walks up to the cabinet and interacts with it, which triggers TS2 to load and take over their screen until they exit and resume playing Homefront's campaign.
+Normally, the Homefront TS2 port is limited to just 2 playable story missions: Siberia and Chicago. Players would have to play through Homefront's campaign for several hours until they reach an arcade cabinet located in the game. The player walks up to the cabinet and interacts with it, which triggers TS2 to load and take over their screen until they exit and resume playing Homefront's campaign.
 
-This project, **TS2 Redux**, unlocks all of TS2 permanently, fixes several game-breaking bugs, adds quality-of-life enhancements, and adds extra content.
+This project, **TS2 Redux**, installs into Homefront's game folder and unlocks all of TS2 permanently, fixes several game-breaking bugs, adds quality-of-life enhancements, and extra content.
 
-It's worth noting that this PC port of TS2 was not finished by the original developers, so there are a few rough edges that we're still working on smoothing out (see the *To-Do / Known-Bugs* section below).
+It's worth noting that this PC port of TS2 was not finished by the original developers, so there are rough edges that we're still working on smoothing out (see the *To-Do / Known-Bugs* section below).
 
 *For more information on the history and evolution of this TimeSplitters port, see the Backstory section below.*
 
@@ -90,6 +90,26 @@ When you launch TS2, a black window will appear showing you the button combinati
 	 - Almost every weapons is replaced with the Brick in Story Mode or Arcade.
 	 - You can dual-wield Bricks as well.
 	 - Some objective-related weapons are unchanged.
+
+## Mod Packs
+Included are several themed mod packs by Yossarian the Assyrian. These operate differently than the Cheats listed above. These mod packs can be installed during setup and are permanently enabled until either the corresponding .dll file for that mod is removed (or renamed) from the \Bin64\TS2Redux folder OR by running the installer again and removing the mods you no longer want.
+
+### TimeSplitters 2 Remix Mod
+
+From [TimeSplitters 2 Remix Mod - moddb.com](https://www.moddb.com/mods/timesplitters-2-remix-mod)
+> All 10 Story Mode levels have been overhauled in a single mod,
+> featuring the same premises as the GameCube version. These changes
+> also carry over to its Arcade Mode, where additional content like the
+> Mox Weapon and Silenced Lugers are available! Although it lacks the
+> custom textures of the original, the remastered Remix Mod makes up for
+> it with new features.
+> 
+> All Story levels have altered music options! New character
+> replacements make up some of the enemies you'll encounter, like riot
+> cops in Chicago or clowns in Notre Dame! Some unique weapons also
+> appear in this mod port, like the lightning-shooting Storm Pistol and
+> powerful Future Shotgun!
+
 
 # Screenshots
 
