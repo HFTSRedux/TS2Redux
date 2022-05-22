@@ -1,5 +1,5 @@
 #define MyAppName "TS2 Redux"
-#define MyAppVersion "0.2.6"
+#define MyAppVersion "0.2.7"
 #define MyAppPublisher "Redux Tech Team"
 #define GitHubURL "https://github.com/HFTSRedux/TS2Redux"
 #define DiscordURL "https://discord.gg/fBnFZBYht5"
@@ -83,6 +83,9 @@ Name: "mod\ddkcheats"; Description: "DDK Cheats - Experimental cheats and tweaks
 Name: "mod\yosremix"; Description: "Yossarian's Remix Mod - Story overhaul, provides a new experience in story missions"; Flags:;  Types: extended
 Name: "mod\yosmods"; Description: "Yossarian's Cheats - Cheats + mods, press SHIFT+F1 in-game for list of commands"; Flags:;  Types: extended
 Name: "mod\minigames"; Description: "Minigames Unlock - Unlocks 3 arcade games in Temporal Uplink weapon"; Flags:;  Types: extended
+Name: "mod\haunted"; Description: "Yossarian's Haunted Mod (DONT USE WITH REMIX)"; Flags:;  Types: extended
+Name: "mod\ts1guns"; Description: "Yossarian's TS1 Guns Mod"; Flags:checkablealone;  Types: extended
+Name: "mod\vattic"; Description: "Yossarian's John Vattic Playable Mod"; Flags:checkablealone;  Types: extended
 Name: "mod\breathe"; Description: "Disable Character Breathing Effect"; Flags: checkablealone;  Types:  main extended
 
 ;[Tasks]
@@ -112,6 +115,7 @@ Source: "App-DLLs\TS2Redux\StraightIntoTS2byDevilDwarf.dll"; DestDir: "{app}\Bin
 Source: "App-DLLs\TS2Redux\UnlockArcadeAndChallengeByFanoto.dll"; DestDir: "{app}\Bin64\TS2Redux"; Components: menu\archal
 Source: "App-DLLs\TS2Redux\YossarianRemix.dll"; DestDir: "{app}\Bin64\TS2Redux"; Components: mod\yosremix
 Source: "App-DLLs\TS2Redux\YossariansMods.dll"; DestDir: "{app}\Bin64\TS2Redux"; Components: mod\yosmods
+Source: "App-DLLs\TS2Redux\YossariansHauntedMod.dll"; DestDir: "{app}\Bin64\TS2Redux"; Components: mod\haunted
 ; EXE
 Source: "EXE-Appearence\Win-TileIcons\TimeSplitters2.VisualElementsManifest.xml"; DestDir: "{app}\Bin64"; Components: theme\launcher
 Source: "EXE-Appearence\Win-TileIcons\tileicons\*"; DestDir: "{app}\Bin64\tileicons"; Components: theme\launcher
@@ -122,6 +126,9 @@ Source: "Texture-Mods\ts2_redux.pak"; DestDir: "{app}\gamehf2"; Components: ui\t
 Source: "Setup-Files\jptch.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: theme\launcher fix\neopatch
 ; patch data
 Source: "NeoTokyo-PatchV2\NeoTokyo-PatchV2.data"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: fix\neopatch
+Source: "NeoTokyo-PatchV2\TS2Vattic.Patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\vattic
+Source: "NeoTokyo-PatchV2\TS1Guns.Patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\ts1guns
+Source: "NeoTokyo-PatchV2\Haunted.Patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\haunted
 Source: "EXE-Appearence\TS2-EXE-Appearence-Patch.pat"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: theme\launcher
 
 [UninstallDelete]
@@ -139,6 +146,9 @@ Name: "{commondesktop}\TimeSplitters 2"; Filename: "{app}\Bin64\TimeSplitters2.e
 Filename: "{#DiscordURL}"; Description: "Join TimeSplitters Online Discord Server"; Flags: postinstall shellexec runasoriginaluser;
 Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\Bin64\Homefront2_Release.exe"" ""{tmp}\TS2-EXE-Appearence-Patch.pat"" ""{app}\Bin64\TimeSplitters2.exe"" "; StatusMsg: "Creating TS2 Launcher..."; Flags: skipifsilent; Components: theme\launcher;
 Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\NeoTokyo-PatchV2.data"" ""{app}\gamehf2\ts2_neotokyo_fix.pak"" "; StatusMsg: "Fixing NeoTokyo..."; Flags: skipifsilent; Components: fix\neopatch;
+Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\Haunted.Patch"" ""{app}\gamehf2\TS2HauntedEdition.pak"" "; StatusMsg: "Creating Haunted Edition pak..."; Flags: skipifsilent; Components: mod\haunted;
+Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\TS1Guns.Patch"" ""{app}\gamehf2\TS2TS1ClassicGuns.pak"" "; StatusMsg: "Creating TS1Guns pak..."; Flags: skipifsilent; Components: mod\ts1guns;
+Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\TS2Vattic.Patch"" ""{app}\gamehf2\TS2Vattic.pak"" "; StatusMsg: "Creating Vattic pak..."; Flags: skipifsilent; Components: mod\vattic;
 Filename: "{tmp}\homefront_ripper.bat"; Parameters:" ""{app}"" "; StatusMsg: "Running Homefront Ripper..."; Components: theme\ripper;
 Filename: "{cmd}"; Parameters:"/c rd /s /q ""{app}\ripped"""; Description: "Delete Ripped Homefront files"; Flags: postinstall; Components: theme\ripper;
 
