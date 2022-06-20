@@ -18,6 +18,9 @@ Special Thanks:
  - TanFlo1997: Creating the Dambuster Studios Easter-Egg Hunt Discord server
  - XeNTaX Game Research Forum: technical information about Homefront
  
- The setup wizard makes use of these external programs:
- - Jojos Binary Diff ("Jdiff"): https://sourceforge.net/projects/jojodiff/
+ The setup wizard makes use of these external open-source programs:
+ - JPATCH, Jojos Binary Diff ("Jdiff"): https://sourceforge.net/projects/jojodiff/
+ - Xbox ADPCM decoder and player 0.2.3a by Luigi Auriemma: http://aluigi.altervista.org/papers.htm#xbox
+ - 7-Zip: https://www.7-zip.org/
  - DepotDownloader: https://github.com/SteamRE/DepotDownloader
+ The binaries for these programs are bundled in with this installer. The source code for each program can be acquired by using the links provided above.

@@ -1,5 +1,5 @@
 #define MyAppName "TS2 Redux"
-#define MyAppVersion "0.2.7"
+#define MyAppVersion "0.2.8"
 #define MyAppPublisher "Redux Tech Team"
 #define GitHubURL "https://github.com/HFTSRedux/TS2Redux"
 #define DiscordURL "https://discord.gg/fBnFZBYht5"
@@ -86,7 +86,8 @@ Name: "mod\minigames"; Description: "Minigames Unlock - Unlocks 3 arcade games i
 Name: "mod\haunted"; Description: "Yossarian's Haunted Mod (DONT USE WITH REMIX)"; Flags:;  Types: extended
 Name: "mod\ts1guns"; Description: "Yossarian's TS1 Guns Mod"; Flags:checkablealone;  Types: extended
 Name: "mod\vattic"; Description: "Yossarian's John Vattic Playable Mod"; Flags:checkablealone;  Types: extended
-Name: "mod\breathe"; Description: "Disable Character Breathing Effect"; Flags: checkablealone;  Types:  main extended
+Name: "mod\breathe"; Description: "Disable Character Breathing Effect"; Flags: checkablealone;  Types:  extended
+Name: "mod\ts2sounds"; Description: "Restore original TS2 weapon sound effects (based on Xbox port)"; Flags: checkablealone;  Types:  extended
 
 ;[Tasks]
 ;Name: "task"; Description: "Task";
@@ -123,13 +124,17 @@ Source: "Setup-Files\homefront_ripper.bat"; DestDir: "{tmp}"; Flags: deleteafter
 ; textures PAK
 Source: "Texture-Mods\ts2_redux.pak"; DestDir: "{app}\gamehf2"; Components: ui\textures
 ; Jdiff - jojodiff.sourceforge.net
-Source: "Setup-Files\jptch.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: theme\launcher fix\neopatch
+Source: "Setup-Files\jptch.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: theme\launcher fix\neopatch mod\vattic mod\ts1guns mod\haunted mod\ts2sounds
 ; patch data
-Source: "NeoTokyo-PatchV2\NeoTokyo-PatchV2.data"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: fix\neopatch
-Source: "NeoTokyo-PatchV2\TS2Vattic.Patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\vattic
-Source: "NeoTokyo-PatchV2\TS1Guns.Patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\ts1guns
-Source: "NeoTokyo-PatchV2\Haunted.Patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\haunted
+Source: "Patches\NeoTokyo-PatchV2.patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: fix\neopatch
+Source: "Patches\TS2Vattic.Patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\vattic
+Source: "Patches\TS1Guns.Patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\ts1guns
+Source: "Patches\Haunted.Patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\haunted
 Source: "EXE-Appearence\TS2-EXE-Appearence-Patch.pat"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: theme\launcher
+Source: "Patches\xbs_extract.patch"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\ts2sounds
+Source: "Setup-Files\ts2_gun_sfx.bat"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\ts2sounds
+Source: "Setup-Files\7za.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\ts2sounds
+Source: "Setup-Files\xbadpdec.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall; Components: mod\ts2sounds
 
 [UninstallDelete]
 Type: files; Name: "{app}\Bin64\TimeSplitters2.exe"; Components: theme\launcher
@@ -145,10 +150,12 @@ Name: "{commondesktop}\TimeSplitters 2"; Filename: "{app}\Bin64\TimeSplitters2.e
 [Run]
 Filename: "{#DiscordURL}"; Description: "Join TimeSplitters Online Discord Server"; Flags: postinstall shellexec runasoriginaluser;
 Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\Bin64\Homefront2_Release.exe"" ""{tmp}\TS2-EXE-Appearence-Patch.pat"" ""{app}\Bin64\TimeSplitters2.exe"" "; StatusMsg: "Creating TS2 Launcher..."; Flags: skipifsilent; Components: theme\launcher;
-Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\NeoTokyo-PatchV2.data"" ""{app}\gamehf2\ts2_neotokyo_fix.pak"" "; StatusMsg: "Fixing NeoTokyo..."; Flags: skipifsilent; Components: fix\neopatch;
+Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\NeoTokyo-PatchV2.patch"" ""{app}\gamehf2\ts2_neotokyo_fix.pak"" "; StatusMsg: "Fixing NeoTokyo..."; Flags: skipifsilent; Components: fix\neopatch;
 Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\Haunted.Patch"" ""{app}\gamehf2\TS2HauntedEdition.pak"" "; StatusMsg: "Creating Haunted Edition pak..."; Flags: skipifsilent; Components: mod\haunted;
 Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\TS1Guns.Patch"" ""{app}\gamehf2\TS2TS1ClassicGuns.pak"" "; StatusMsg: "Creating TS1Guns pak..."; Flags: skipifsilent; Components: mod\ts1guns;
 Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\gamehf2\lsao_cached.pak"" ""{tmp}\TS2Vattic.Patch"" ""{app}\gamehf2\TS2Vattic.pak"" "; StatusMsg: "Creating Vattic pak..."; Flags: skipifsilent; Components: mod\vattic;
+Filename: "{tmp}\ts2_gun_sfx.bat"; Parameters:" ""{app}"" "; StatusMsg: "Creating TS2 Gun SFX pak..."; Components: mod\ts2sounds;
+Filename: "{tmp}\jptch.exe"; Parameters:" ""{app}\Bin64\Homefront2_Release.exe"" ""{tmp}\TS2-EXE-Appearence-Patch.pat"" ""{app}\Bin64\TimeSplitters2.exe"" "; StatusMsg: "Creating TS2 Launcher..."; Flags: skipifsilent; Components: theme\launcher;
 Filename: "{tmp}\homefront_ripper.bat"; Parameters:" ""{app}"" "; StatusMsg: "Running Homefront Ripper..."; Components: theme\ripper;
 Filename: "{cmd}"; Parameters:"/c rd /s /q ""{app}\ripped"""; Description: "Delete Ripped Homefront files"; Flags: postinstall; Components: theme\ripper;
 
