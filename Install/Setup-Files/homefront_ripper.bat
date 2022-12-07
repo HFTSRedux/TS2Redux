@@ -17,7 +17,7 @@ move "%gamepath%\gamehf2\sounds.pak" "%gamepath%\ripped\gamehf2"
 
 move "%gamepath%\gamehf2\_activitycache\*" "%gamepath%\ripped\gamehf2\_activitycache"
 move "%gamepath%\localization\*" "%gamepath%\ripped\localization"
-move "%gamepath%\ripped\localization\english_xml.pak" "%gamepath%\localization"
+move "%gamepath%\ripped\localization\*_xml.pak" "%gamepath%\localization"
 move "%gamepath%\gamehf2\content\*" "%gamepath%\ripped\gamehf2\content"
 move "%gamepath%\gamehf2\_levelcache\*" "%gamepath%\ripped\gamehf2\_levelcache"
 
