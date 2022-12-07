@@ -108,15 +108,17 @@ From [Remix Mod - moddb.com](https://www.moddb.com/mods/timesplitters-2-remix-mo
 ### Haunted Edition Mod
 From [TimeSplitters 2: Haunted Edition - moddb.com](https://www.moddb.com/mods/timesplitters-2-haunted-edition)
 
-> Be prepared for ghoulish action in this spooky mod for TimeSplitters 2! The story is set in an alternate 1979, where a mysterious plague has been corrupting people into undead monsters across America. As the newest recruit of an organization investigating the incidents, you'll battle against zombies, cultists, and all sorts of enemies in your search for answers. You'll experience this journey across 5 Story Mode levels and 4 MapMaker levels.
+> Be prepared for ghoulish action in this spooky mod for TimeSplitters 2! The story is set in an alternate 1979, where a mysterious plague has been corrupting people into undead monsters across America. As the newest recruit of an organization investigating the incidents, you'll battle against zombies, cultists, and all sorts of enemies in your search for answers. You'll experience this journey across 5 Story Mode levels ~~and 4 MapMaker levels~~.
 > 
 > All sorts of thrills will await players: dozens of diabolical new
 > characters, an arsenal of grisly new weapons like the OVE9000 Saw and
 > Battle Rifle, and plenty of quality of life improvements for the game.
-> Blast through MapMaker Story levels in co-op, test your wits against
+> ~~Blast through MapMaker Story levels in co-op, test your wits against
 > enemies like the Cult Defender or Brutus Heavy Zombie, and make sure
 > to conserve your ammo; the last thing you want is to hear your gun go
-> ***click*** during a shootout!
+> ***click*** during a shootout!~~
+
+Note: MapMaker is broken. Features that rely on MapMaker will not be available.
 
 # Installing and Uninstalling
 
