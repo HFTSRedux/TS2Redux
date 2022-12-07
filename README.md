@@ -126,6 +126,7 @@ To install, follow these steps:
  1. Download the latest version of TS2 Redux from the project's GitHub page: https://github.com/HFTSRedux/TS2Redux/releases
  2. Double-click on the application you just downloaded and follow the on-screen instructions.
 ![TS2 Redux Installer screenshot](Images/screenshot-installer.png?raw=true)
+
 That's it! After using the installer, the mod will be active the next time you start the game.
 
 ### Display Settings
@@ -133,6 +134,7 @@ TS2 will inherit Homefront's display settings automatically. If you need to chan
 
 ### Optional: Custom TS2 Launcher
 ![TimeSplitters 2 custom launcher](Images/ts2-launcher.png?raw=true "TimeSplitters 2 custom launcher")
+
 Want to have a fancy TS2 launcher that skips Homefront's menu and boots right into TS2? The installer (included with this mod) has an option that creates a TS2-themed copy of your Homefront game executable. Just make sure the "Create TS2 Launcher" option is checked during the install process (enabled by default).
 
 ### Optional: Reduce Homefront's Size
@@ -150,22 +152,36 @@ If something goes wrong and you want to start completely over, you can use Steam
 # Screenshots
 **Main Menu**
 ![Main menu](Images/ts2-mainmenu.jpg?raw=true "Main menu")
-New menu items, high-res logo, modern gamepad icons. *Note: the Network menu doesn't work yet*
+
 **TS2 on Xbox** (emulated), for reference
+
 ![Mexican Mission screenshot](Images/screenshot-mexican-mission-xbox.jpg?raw=true "Mexican Mission, as seen on the Xbox port")
+
 **TS2 Redux** (running on PC)
+
 ![Mexican Mission screenshot](Images/screenshot-mexican-mission-redux.jpg?raw=true "Mexican Mission, as seen in TS2 Redux")
+
 **Texture example: Diamondplate** - *Top: new / Bottom: old*
+
 ![Screenshot showing high-res texture example of diamondplate texture](Images/screenshot-diamondplate-compare.jpg?raw=true "Screenshot showing high-res texture example of diamondplate texture")
+
 **Texture example: Crate** - *Left: old / Right: new*
+
 ![Screenshot showing high-res texture example of a crate texture](Images/screenshot-crate-compare.jpg?raw=true "Screenshot showing high-res texture example of a crate texture")
+
 **Texture example: Game mode icons** - *Left: old / Right: new*
+
 ![Comparison of old and new textures - game mode icons](Images/screenshot-icon-compare.jpg?raw=true "Comparison of old and new textures - game mode icons")
+
 **Weapon crosshairs** - *Left: old / Right: new*
 ![Comparison of old and new textures - weapon crosshairs](Images/logo.png?raw=true "Comparison of old and new textures - weapon crosshairs")
+
 **Chemical Plant** *(map from TimeSplitters 1)*
+
 ![Chemical Plant map 1](Images/screenshot-chemplant01.jpg?raw=true "Chemical Plant map 1")
+
 ![Chemical Plant map 2](Images/screenshot-chemplant02.jpg?raw=true "Chemical Plant map 2")
+
 # To-Do / Known-Bugs
 There are several features that are either not present in TS2 Redux or are still being worked on.
 
