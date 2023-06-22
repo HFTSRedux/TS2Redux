@@ -17,4 +17,14 @@ gamehf2\levels\philly\levelmm.pak
 gamehf2\_fastload\engineboot.pak
 gamehf2\_fastload\frontend.pak
 gamehf2\_fastload\intromovies.pak
+localization\brazilian_portuguese_xml.pak
+localization\czech_xml.pak
 localization\english_xml.pak
+localization\french_xml.pak
+localization\german_xml.pak
+localization\italian_xml.pak
+localization\japanese_xml.pak
+localization\mexican_spanish_xml.pak
+localization\polish_xml.pak
+localization\russian_xml.pak
+localization\spanish_xml.pak
