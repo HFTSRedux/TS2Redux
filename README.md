@@ -196,7 +196,7 @@ There are several features that are either not present in TS2 Redux or are still
  - Mouse sensitivity is messed up (for some users)
 	 - If your mouse sensitivity feels like it's broken, open your game.cfg file and add this line to the bottom: `cl_sensitivity = 3` (replace the number 3 with your desired sensitivity level with higher numbers being more sensitive). If this setting gets reverted, you can make your game.cfg file read-only using Windows' built-in file permissions features.
  - Game window is cropped / only one-quarter of the screen is visible (for some users)
-	 - If you can only see a portion of the game window (with the rest of it being off screen), then you probably have Super Sampling enabled. You can disable it in Homefront's display settings, or you can edit your game.cfg file and fine the line that reads `cl_sensitivity` and set it to `1`. The line should read: `r_supersampling = 1`
+	 - If you can only see a portion of the game window (with the rest of it being off screen), then you probably have Super Sampling enabled. You can disable it in Homefront's display settings, or you can edit your game.cfg file and fine the line that reads `r_supersampling` and set it to `1`. The line should read: `r_supersampling = 1`
 
 # Reporting Bugs / Feedback
 Did you find a new bug? Let us know!
